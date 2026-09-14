@@ -23,7 +23,7 @@ def test_not_palindrome():
     assert palindrome(12) is False
     assert palindrome(123) is False
     assert palindrome(123421) is False
-    assert palindrome(3546453) is False
+    assert palindrome(3546452) is False
 
 def test_zeros_inside():
     assert palindrome(1001) is True
