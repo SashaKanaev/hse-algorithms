@@ -5,7 +5,6 @@ class Node:
 
 
 class LinkedListStack:
-
     def __init__(self):
         self.head = None
         self._size = 0
@@ -37,15 +36,6 @@ class LinkedListStack:
         new_node.next = self.head
         self.head = new_node
         self._size += 1
-
-
-# -----------
-
-
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
 
 
 class Queue:
