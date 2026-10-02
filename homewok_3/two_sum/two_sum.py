@@ -1,3 +1,5 @@
+from two_sum import two_sum
+
 def two_sum(arr, k):
     seen = {}
 
