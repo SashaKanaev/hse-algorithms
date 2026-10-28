@@ -14,7 +14,6 @@ class BinarySearchTree:
                 self.insert(value)
 
     def insert(self, value):
-        """Вставляет значение в BST. Дубликаты не добавляются."""
         if self.root is None:
             self.root = Node(value)
             return True
@@ -37,21 +36,19 @@ class BinarySearchTree:
                 current = current.right
 
     def _traverse(self, order):
-        """Обход дерева по шаблону из N (узел), L (лево), R (право)."""
         result = []
         stack = [(self.root, False)]
 
         while stack:
-            node, should_visit = stack.pop()
+            node, visit = stack.pop()
 
             if node is None:
                 continue
 
-            if should_visit:
+            if visit:
                 result.append(node.value)
                 continue
 
-            # Стек работает по LIFO, поэтому операции кладём в обратном порядке.
             for step in reversed(order):
                 if step == "N":
                     stack.append((node, True))
@@ -79,3 +76,16 @@ class BinarySearchTree:
 
     def reverse_postorder(self):
         return self._traverse("RLN")
+
+
+if __name__ == "__main__":
+    import sys
+
+    numbers = [int(value) for value in sys.stdin.read().split()]
+    tree = BinarySearchTree(numbers)
+
+    for name in (
+        "preorder", "inorder", "postorder",
+        "reverse_preorder", "reverse_inorder", "reverse_postorder",
+    ):
+        print(f"{name}: {getattr(tree, name)()}")
